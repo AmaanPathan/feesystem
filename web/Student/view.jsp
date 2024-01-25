@@ -1,38 +1,8 @@
-
+<%@include file="st.jsp" %>
 <%@page import="amaan.data.modules.Mylib"%>
 <%@page import="java.sql.*" %>
-<html>
-<head>
-    <title>FEE SYSTEM</title>
-    <link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" />
-    <link href="../static/css/newcss.css" rel="stylesheet" type="text/css" />
-    <link href="../static/jQuery/jquery.js" rel="stylesheet" type="text/css" />
-<script>
-    
-</script>
-</head>
-<body>
- <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="margin-top: -10px; background-image: url(../static/images/8.png);">
-     <div class="container-fluid" style="margin-top:10px;">
-    <a class="navbar-brand" href="#"> FEE SYSTEM</a>
-    <button class="navbar-toggler navbar-dark" style="float: right;">
-    	<span class="navbar-toggler-icon" id="v1"></span>
-    </button>
-    <div class="collapse navbar-collapse " id="navbarColor02">
-        <ul class="navbar-nav me-auto">
-     
-        </ul>
-       
-    </div>
-    
-  </div>
- </nav>
-    
-    <div class="container-fluid" style="background-image: url(../static/images/8.png); min-height: 100%; background-size: 100% 100%; margin-top: -60px;">
-<br/>
-<br/>
-<br/>
-
+<div class="row">
+    <div class="col-6" id="d1">
 <%
     String s_id=request.getParameter("s_id");
     if(s_id==null)
@@ -59,8 +29,24 @@
             b=r1.getString("contact");
             c=r1.getString("address");
             d=r1.getString("email");
-
-
+        %>
+             
+           <h2><%= e %>. <%= a %></h2>
+           <p>
+               Contact:<%= b %><br/>
+               Address:<%= c %><br/>
+               Email:<%= d %><br/>
+           </p>
+    
+           
+           <p><a href="editStudent.jsp?s_id=<%= e %>" id="g1">edit</a></p>
+           <p><a href="deleteStudent.jsp?s_id=<%= e %>" id="g1">delete</a></p>
+           <p><a href="del_img.jsp?s_id=<%= e %>" id="g1">delete images</a></p>
+    </div>
+    <div class="col-6" >
+            
+            
+            <%
             String s2="select * from st_photo where s_id=?";
             PreparedStatement p2=cn.prepareCall(s2);
             p2.setInt(1, e);
@@ -69,7 +55,7 @@
             {
                 String photo=r2.getString("photo");
                 %>
-                <img src="operator/photo/<%= photo %>" width="100" height="125" />
+                <img src="photo/<%= photo %>" width="100" height="125" />
                <%
             }
             else
@@ -86,28 +72,15 @@
                 </p>
                     </form>
         <%
-            }
-        %>
-           <h2><%= e %>. <%= a %></h2>
-           <p>
-               Contact:<%= b %><br/>
-               Address:<%= c %><br/>
-               Email:<%= d %><br/>
-           </p>
+    }
+%>       
+           
+           </div>
+</div>
     
-       
-           <%--<a href="editStudent.jsp?s_id=<%= e %>">edit</a>
-       <a href="deleteStudent.jsp?s_id=<%= e %>">delete</a>
-           --%>
-       <br/>
-       <br/> 
+       <hr/>
        <h4>Courses</h4>
-       <%--<form method="post" action="AddCourse.jsp">
-           <h4>Courses
-           <input type="hidden" name="t1" value="<%= e %>"/>
-           <input type="submit" name="B1" value="Add" id="btn2"/>
-           </h4>
-</form>--%>
+       
        <table border="2px solid #000000">
            <tr>
                 <th>course_id</th>
@@ -118,9 +91,7 @@
                 <th>Commencement_date</th>
                 <th>Paid</th>
                 <th>Due</th>
-                <%--<th>Pay</th>
-<th>Changes</th>--%>
-                
+               
             </tr>
         <%
             
@@ -155,36 +126,7 @@
                 <td><%= v %></td>
                 <td><%= course_paid %></td>
                 <td><%= course_due %></td>
-                <%--<td>
-                    <%
-                    if(course_due==0)
-                    {
-                        %>
-                        <p>Completed</p>
-                        <%
-                    }
-                    else
-                    {
-                    %>
-                    <form method="post" action="Installment1.jsp">
-                        <input type="hidden" name="t1" value="<%= e %>" />
-                        <input type="hidden" name="t2" value="<%= p %>" />
-                        <input type="hidden" name="t3" value="<%= s %>" />
-                        <input type="submit" name="t4" value="Pay" id="btn2"/>
-                    </form>
-                        <%
-                    }
-                %>
-                </td>
-                
-                <td>
-                    <form method="post" action="editf.jsp">
-                        <input type="hidden" name="t1" value="<%= e %>" />
-                        <input type="hidden" name="t2" value="<%= p %>" />
-                        <input type="hidden" name="t3" value="<%= s %>" />
-                        <input type="submit" name="t4" value="Edit" id="btn2" />
-                    </form>
-</td>--%>
+            
             </tr>
         
        <%    
@@ -192,8 +134,8 @@
             %>
             </table>
             <h5>Total : <%= total_fee %></h5>
-            <br/>
-            <br/>
+            
+            <hr/>
             <h4>Installment</h4>
             <table border="2px solid #000000">
             <tr>
@@ -234,17 +176,15 @@
             int due=total_fee-paid;
             %>
             </table>
+            
            <h5>Total Paid : <%= paid %></h5>
            <h5>Due : <%= due %></h5>
             <%
         }
     }
 %> 
+<hr/>
+<a href="../Login.jsp" id="btn2"> back </a>
+   
 
-<a href="Login.jsp" id="btn2"> back </a>
-    </div>
-
-
-
-</body>
-</html>
+<%@include file="st2.jsp" %>

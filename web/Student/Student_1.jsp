@@ -9,8 +9,8 @@
     Connection cn=obj.connect();
 %>
 <br/>
-<br/>
-<br/>
+<h1>Dashboard</h1>
+<hr/>
 
         
             
@@ -50,4 +50,4 @@ if(dtype!=null)
 }
     %>
 </div>
-            <%@include file="st.jsp" %>
+            <%@include file="st2.jsp" %>

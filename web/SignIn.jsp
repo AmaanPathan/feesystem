@@ -32,18 +32,21 @@
         </tr>
          <tr>
             <th>Usertype</th>
-            
         </tr>
         <tr>            
-            <td><input type="text" name="t7" id="txt7"/><br/><span id="sp7"></span><br/><br/></td>
-            
-            
+            <td>
+                <input type="radio" name="t7" id="txt7" style="width: 15px;" value="student"/><p style="margin-left: 20px; margin-top: -28px;">Student</p>
+                <input type="radio" name="t7" id="txt7" style="width: 15px;" value="operator"/><p style="margin-left: 20px; margin-top: -28px;">Operator</p>
+                <input type="radio" name="t7" id="txt7" style="width: 15px;" value="admin"/><p style="margin-left: 20px; margin-top: -28px;">Admin</p>      
+            </td>
         </tr>
     </table>
+    <br/>
     <p><button type="submit" id="btn2" name="btn1">Save</button></p>
 
 </form>
 <form method="post" action="index.jsp">
     <button type="submit" id="btn2" name="btn1">Back</button>
 </form>
+
 <%@include file="in2.jsp" %>

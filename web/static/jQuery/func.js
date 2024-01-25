@@ -309,7 +309,7 @@ function gocher(p1,p2)
 
 function fees(p1,p2)
 {
-        if(p1>p2)
+        if(p1<=p2)
         {
                 return true;
         }
@@ -321,10 +321,10 @@ function fees(p1,p2)
 
 function amount()
 {
-    var t1,t2;
+    var t1,t2,t3;
         t1=document.getElementById("txt1");
         t2=document.getElementById("txt3");
-    
+        t3=document.getElementById("txt4");
         
         var a,b;
         a=t1.value;
@@ -354,6 +354,7 @@ function amount()
                 t1.value="";
                 t2.value="";
                 t1.focus();
+                alert("Amount Exceeded! Refresh");
                 return false;
         }
         

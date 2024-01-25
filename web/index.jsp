@@ -60,4 +60,5 @@
 			
 		</div>
 	</div>
+<br/>
 <%@include file="in2.jsp" %>

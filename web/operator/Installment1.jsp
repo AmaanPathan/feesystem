@@ -9,7 +9,7 @@
     String fee=request.getParameter("t3");
     String st=request.getParameter("t5");
     String course_paid=request.getParameter("t6");
-    
+    String course_due=request.getParameter("t7");
     
     Class.forName("com.mysql.jdbc.Driver");
     
@@ -45,12 +45,14 @@
  <p>Duration: <%= c%></p>
  <p>Commencement_date: <%= d %></p>
  <p>Paid : <%= course_paid %></p>
+ <p>Due : <%= course_due %></p>
  
  <form method="post" action="Installment.jsp" onsubmit="return amount()">
      <input type="hidden" name="h1" value="<%= f %>"/>
      <input type="hidden" name="h2" value="<%= e %>"/>
      <input type="hidden" name="h3" value="<%= st %>"/>
-     <p><input type="hidden" name="h4" value="<%= course_paid %>" id="txt3"/></p>
+     <input type="hidden" name="h3" value="<%= b %>" id="txt4"/>
+     <p><input type="hidden" name="h4" value="<%= course_due %>" id="txt3"/></p>
      <p>Amount to pay<br/><input type="text" name="t1" id="txt1"/><span id="sp1"></span></p>
      <p>Remark<br/><input type="text" name="t2" id="txt2"/><span id="sp2"></span></p>
      <button type="submit" id="btn2">Submit</button>     
